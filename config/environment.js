@@ -89,6 +89,10 @@ module.exports = function (environment) {
     ENV.rootURL = process.env.EMBER_ROOT_URL;
   }
 
+  if (process.env.ASSETS_PREFIX) {
+    ENV.assetsPrefix = process.env.ASSETS_PREFIX;
+  }
+
   if (process.env.USER_SERVICE_URL) {
     ENV.userService.url = process.env.USER_SERVICE_URL;
   }
