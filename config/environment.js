@@ -89,10 +89,6 @@ module.exports = function (environment) {
     ENV.rootURL = process.env.EMBER_ROOT_URL;
   }
 
-  if (process.env.ASSETS_PREFIX) {
-    ENV.assetsPrefix = process.env.ASSETS_PREFIX;
-  }
-
   if (process.env.USER_SERVICE_URL) {
     ENV.userService.url = process.env.USER_SERVICE_URL;
   }
@@ -150,12 +146,9 @@ module.exports = function (environment) {
   }
 
   ENV.brand = {
-    mailto: 'pass@jhu.edu'
+    name: process.env.BRAND_NAME || 'jhu',
+    mailto: process.env.BRAND_MAILTO || 'pass@jhu.edu'
   };
-
-  if (process.env.BRAND_MAILTO) {
-    ENV.brand.mailto = process.env.BRAND_MAILTO;
-  }
 
   return ENV;
 };
