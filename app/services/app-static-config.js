@@ -15,6 +15,22 @@ export default Service.extend({
   },
 
   /**
+   * Convenience function for directly getting the assetsUri from the static config
+   */
+  async getAssetsUrl() {
+    const config = await this.getStaticConfig();console.log(`assetsUri: ${config.assetsUri}`);
+    return config.assetsUri;
+  },
+
+  /**
+   * Convenience function for directly getting the branding object from the static config
+   */
+  async getBranding() {
+    const config = await this.getStaticConfig();
+    return config.branding;
+  },
+
+  /**
    * Get the static configuration for PASS
    *
    * @returns {Promise}
@@ -30,7 +46,7 @@ export default Service.extend({
     })
       .then(resp => resp.json())
       .then((data) => {
-        this.set('_config', data);
+        this.set('_config', data); console.log('moo');
         return data;
       })
       .catch((error) => {
