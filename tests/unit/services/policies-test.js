@@ -1,3 +1,4 @@
+import EmberObject from '@ember/object';
 import { setupTest } from 'ember-qunit';
 import { module, test } from 'qunit';
 
@@ -10,10 +11,10 @@ module('Unit | Service | policies', (hooks) => {
     const service = this.owner.lookup('service:policies');
     assert.ok(service, 'service not found');
 
-    const store = Ember.Object.create({
+    const store = EmberObject.create({
       findRecord(type, id) {
         assert.ok(true);
-        return Promise.resolve(Ember.Object.create({ text: 'Moo' }));
+        return Promise.resolve(EmberObject.create({ text: 'Moo' }));
       }
     });
 
@@ -27,7 +28,7 @@ module('Unit | Service | policies', (hooks) => {
       }
     });
 
-    const sub = Ember.Object.create({ id: 'moo_id' });
+    const sub = EmberObject.create({ id: 'moo_id' });
 
     const policies = await service.get('getPolicies').perform(sub);
 
@@ -43,10 +44,10 @@ module('Unit | Service | policies', (hooks) => {
     const service = this.owner.lookup('service:policies');
     assert.ok(service, 'service not found');
 
-    const store = Ember.Object.create({
+    const store = EmberObject.create({
       findRecord(type, id) {
         assert.ok(true);
-        return Promise.resolve(Ember.Object.create({ text: 'Moo' }));
+        return Promise.resolve(EmberObject.create({ text: 'Moo' }));
       }
     });
 
@@ -66,7 +67,7 @@ module('Unit | Service | policies', (hooks) => {
       }
     });
 
-    const sub = Ember.Object.create({ id: 'moo_id' });
+    const sub = EmberObject.create({ id: 'moo_id' });
 
     service.get('getRepositories').perform(sub).then((rules) => {
       assert.ok(Array.isArray(rules.required), 'rules.required should be an array');
@@ -102,7 +103,7 @@ module('Unit | Service | policies', (hooks) => {
     const service = this.owner.lookup('service:policies');
     assert.ok(service, 'service not found');
 
-    const sub = Ember.Object.create({ id: 'moo' });
+    const sub = EmberObject.create({ id: 'moo' });
 
     service.get('getPolicies').perform(sub).catch(e => assert.ok(e.message.includes('403')));
   });
@@ -125,7 +126,7 @@ module('Unit | Service | policies', (hooks) => {
     const service = this.owner.lookup('service:policies');
     assert.ok(service, 'service not found');
 
-    const sub = Ember.Object.create({ id: 'moo' });
+    const sub = EmberObject.create({ id: 'moo' });
 
     service.get('getRepositories').perform(sub).catch(e => assert.ok(e.message.includes('404'), 'unexpected error caught'));
   });

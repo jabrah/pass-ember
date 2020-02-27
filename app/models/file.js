@@ -1,14 +1,14 @@
-import DS from 'ember-data';
+import Model, { attr, belongsTo } from '@ember-data/model';
 
-export default DS.Model.extend({
-  name: DS.attr('string'),
-  description: DS.attr('string'),
+export default Model.extend({
+  name: attr('string'),
+  description: attr('string'),
   /** Possible values: manuscript, supplemental, table, figure */
-  fileRole: DS.attr('string'),
-  uri: DS.attr('string'),
-  mimeType: DS.attr('string'),
-  submission: DS.belongsTo('submission'),
+  fileRole: attr('string'),
+  uri: attr('string'),
+  mimeType: attr('string'),
+  submission: belongsTo('submission'),
 
   // not represented on backend
-  _file: DS.attr(),
+  _file: attr(),
 });

@@ -1,13 +1,13 @@
-import DS from 'ember-data';
+import Model, { attr, hasMany } from '@ember-data/model';
 
-export default DS.Model.extend({
-  title: DS.attr('string'),
-  description: DS.attr('string'),
-  policyUrl: DS.attr('string'),
+export default Model.extend({
+  title: attr('string'),
+  description: attr('string'),
+  policyUrl: attr('string'),
 
-  repositories: DS.hasMany('repository'),
-  institution: DS.attr('string'),
+  repositories: hasMany('repository'),
+  institution: attr('string'),
   // funder: DS.hasMany('funder'),
 
-  _type: DS.attr('string')
+  _type: attr('string')
 });

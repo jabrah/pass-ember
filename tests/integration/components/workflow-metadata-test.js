@@ -1,3 +1,6 @@
+import Service from '@ember/service';
+import EmberObject from '@ember/object';
+import { A } from '@ember/array';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
@@ -8,14 +11,14 @@ module('Integration | Component | workflow-metadata', (hooks) => {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {
-    const repositories = Ember.A();
-    const journal = Ember.Object.create({
+    const repositories = A();
+    const journal = EmberObject.create({
       issns: []
     });
-    const publication = Ember.Object.create({
+    const publication = EmberObject.create({
       journal
     });
-    const submission = Ember.Object.create({
+    const submission = EmberObject.create({
       repositories,
       publication
     });
@@ -26,7 +29,7 @@ module('Integration | Component | workflow-metadata', (hooks) => {
 
     Object.defineProperty(window.navigator, 'userAgent', { value: 'Chrome', configurable: true });
 
-    const mockAjax = Ember.Service.extend({
+    const mockAjax = Service.extend({
       request() {
         return Promise.resolve([
           {
@@ -222,7 +225,7 @@ module('Integration | Component | workflow-metadata', (hooks) => {
 
     run(async () => {
       this.owner.unregister('service:workflow');
-      this.owner.register('service:workflow', Ember.Service.extend({
+      this.owner.register('service:workflow', Service.extend({
         getDoiInfo: () => {},
         isDataFromCrossref: () => false
       }));
@@ -242,7 +245,7 @@ module('Integration | Component | workflow-metadata', (hooks) => {
 
   module('test with mocked doi service', (hooks) => {
     hooks.beforeEach(function () {
-      const mockDoiService = Ember.Service.extend({
+      const mockDoiService = Service.extend({
         doiToMetadata() {
           return {
             ISSN: '1234-4321',
@@ -292,7 +295,7 @@ module('Integration | Component | workflow-metadata', (hooks) => {
     }));
     this.set('submission', sub);
 
-    const mockDoiService = Ember.Service.extend({
+    const mockDoiService = Service.extend({
       doiToMetadata() {
         return {
           'journal-NLMTA-ID': 'MOO JOURNAL'
@@ -300,7 +303,7 @@ module('Integration | Component | workflow-metadata', (hooks) => {
       }
     });
 
-    const mockWorkflow = Ember.Service.extend({
+    const mockWorkflow = Service.extend({
       getDoiInfo: () => {},
       isDataFromCrossref: () => true
     });
@@ -338,7 +341,7 @@ module('Integration | Component | workflow-metadata', (hooks) => {
    * then should not exist in the component's metadata blob.
    */
   test('DOI data should be trimmed', async function (assert) {
-    const mockWorkflow = Ember.Service.extend({
+    const mockWorkflow = Service.extend({
       getDoiInfo() {
         return {
           ISSN: '1234-4321',
@@ -379,7 +382,7 @@ module('Integration | Component | workflow-metadata', (hooks) => {
   });
 
   test('Single schema displays no title', async function (assert) {
-    const mockAjax = Ember.Service.extend({
+    const mockAjax = Service.extend({
       request() {
         return Promise.resolve([
           {
@@ -414,7 +417,7 @@ module('Integration | Component | workflow-metadata', (hooks) => {
   });
 
   test('Check "required" labels for pre-populated array fields', async function (assert) {
-    const mockDoiService = Ember.Service.extend({
+    const mockDoiService = Service.extend({
       doiToMetadata() {
         return {
           moorray: [
@@ -424,7 +427,7 @@ module('Integration | Component | workflow-metadata', (hooks) => {
         };
       }
     });
-    const mockAjax = Ember.Service.extend({
+    const mockAjax = Service.extend({
       request() {
         return Promise.resolve([{
           id: 'moo',
@@ -478,7 +481,7 @@ module('Integration | Component | workflow-metadata', (hooks) => {
   });
 
   test('Check "required" labels for user added array fields', async function (assert) {
-    const mockAjax = Ember.Service.extend({
+    const mockAjax = Service.extend({
       request() {
         return Promise.resolve([{
           id: 'moo',

@@ -1,9 +1,9 @@
-import DS from 'ember-data';
+import Model, { attr, belongsTo } from '@ember-data/model';
 
-export default DS.Model.extend({
-  name: DS.attr('string'),
-  url: DS.attr('string'),
-  localKey: DS.attr('string'),
+export default Model.extend({
+  name: attr('string'),
+  url: attr('string'),
+  localKey: attr('string'),
 
-  policy: DS.belongsTo('policy'),
+  policy: belongsTo('policy'),
 });

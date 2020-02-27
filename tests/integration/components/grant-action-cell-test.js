@@ -11,11 +11,11 @@ module('Integration | Component | grant action cell', (hooks) => {
 
     await this.render(hbs`{{grant-action-cell}}`);
 
-    assert.equal(this.$().text().trim(), 'New submission');
+    assert.dom().hasText('New submission');
 
     // Template block usage:
     await this.render(hbs`{{#grant-action-cell}}template block text{{/grant-action-cell}}`);
 
-    assert.equal(this.$().text().trim(), 'New submission\ntemplate block text');
+    assert.dom().hasText('New submission template block text');
   });
 });

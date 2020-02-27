@@ -1,8 +1,8 @@
-import DS from 'ember-data';
+import Model, { attr } from '@ember-data/model';
 
-export default DS.Model.extend({
+export default Model.extend({
   /** Name of the publisher (REQUIRED) */
-  name: DS.attr('string'),
+  name: attr('string'),
   /**
    * Publisher participation in NIH Public Access Program by sending final published article to PMC.
    *
@@ -12,5 +12,5 @@ export default DS.Model.extend({
    *   - C (Route C: authors or deignee must submit manuscripts to NIHMS)
    *   - D (Route D: some publishers will submit manuscripts to NIHMS)
    */
-  pmcParticipation: DS.attr('string')
+  pmcParticipation: attr('string')
 });

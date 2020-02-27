@@ -1,19 +1,20 @@
-import DS from 'ember-data';
+import Model, { attr, belongsTo } from '@ember-data/model';
+import { computed } from '@ember/object';
 
-export default DS.Model.extend({
+export default Model.extend({
   /**
    * Name of the journal (REQUIRED)
    */
-  journalName: DS.attr('string'),
-  nlmta: DS.attr('string'),
-  pmcParticipation: DS.attr('string'),
-  issns: DS.attr('set'),
-  publisher: DS.belongsTo('publisher'),
+  journalName: attr('string'),
+  nlmta: attr('string'),
+  pmcParticipation: attr('string'),
+  issns: attr('set'),
+  publisher: belongsTo('publisher'),
 
-  isMethodA: Ember.computed('pmcParticipation', function () {
+  isMethodA: computed('pmcParticipation', function () {
     return this.get('pmcParticipation') ? this.get('pmcParticipation').toLowerCase() === 'a' : false;
   }),
-  isMethodB: Ember.computed('pmcParticipation', function () {
+  isMethodB: computed('pmcParticipation', function () {
     return this.get('pmcParticipation') ? this.get('pmcParticipation').toLowerCase() === 'b' : false;
   })
 });

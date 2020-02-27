@@ -1,9 +1,9 @@
-import DS from 'ember-data';
+import Model, { attr, belongsTo } from '@ember-data/model';
 
-export default DS.Model.extend({
-  depositStatusRef: DS.attr('string'),
-  depositStatus: DS.attr('string'),
-  repositoryCopy: DS.belongsTo('repository-copy'),
-  submission: DS.belongsTo('submission'),
-  repository: DS.belongsTo('repository'),
+export default Model.extend({
+  depositStatusRef: attr('string'),
+  depositStatus: attr('string'),
+  repositoryCopy: belongsTo('repository-copy'),
+  submission: belongsTo('submission'),
+  repository: belongsTo('repository'),
 });

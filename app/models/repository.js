@@ -1,18 +1,18 @@
-import DS from 'ember-data';
+import Model, { attr } from '@ember-data/model';
 import { computed } from '@ember/object';
 
-export default DS.Model.extend({
-  name: DS.attr('string'),
-  description: DS.attr('string'),
-  url: DS.attr('string'),
-  formSchema: DS.attr('string'),
-  integrationType: DS.attr('string'),
-  agreementText: DS.attr('string', {
+export default Model.extend({
+  name: attr('string'),
+  description: attr('string'),
+  url: attr('string'),
+  formSchema: attr('string'),
+  integrationType: attr('string'),
+  agreementText: attr('string', {
     defaultValue: false
   }),
-  repositoryKey: DS.attr('string'),
+  repositoryKey: attr('string'),
 
-  _selected: DS.attr('boolean'),
+  _selected: attr('boolean'),
   _isWebLink: computed('integrationType', function () {
     return this.get('integrationType') === 'web-link';
   })

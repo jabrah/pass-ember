@@ -1,11 +1,11 @@
-import DS from 'ember-data';
+import Model, { attr, belongsTo } from '@ember-data/model';
 
-export default DS.Model.extend({
-  eventType: DS.attr('string'),
-  performedDate: DS.attr('date'),
-  performerRole: DS.attr('string'),
-  comment: DS.attr('string'),
-  link: DS.attr('string'),
-  submission: DS.belongsTo('submission'),
-  performedBy: DS.belongsTo('user'),
+export default Model.extend({
+  eventType: attr('string'),
+  performedDate: attr('date'),
+  performerRole: attr('string'),
+  comment: attr('string'),
+  link: attr('string'),
+  submission: belongsTo('submission'),
+  performedBy: belongsTo('user'),
 });

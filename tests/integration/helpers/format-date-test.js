@@ -1,3 +1,4 @@
+import { find } from '@ember/test-helpers';
 import { setupRenderingTest } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import { module, test } from 'qunit';
@@ -11,6 +12,6 @@ module('Integration | Helper | format date', (hooks) => {
 
     await this.render(hbs`{{format-date inputValue}}`);
 
-    assert.equal(this.$().text().trim(), '08/19/1975');
+    assert.dom().hasText('08/19/1975');
   });
 });

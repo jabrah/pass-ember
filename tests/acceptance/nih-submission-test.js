@@ -1,4 +1,6 @@
 /* eslint-disable prefer-arrow-callback */
+import Service from '@ember/service';
+
 import { module, test } from 'qunit';
 import { setupApplicationTest } from 'ember-qunit';
 import {
@@ -19,7 +21,7 @@ module('Acceptance | submission', function (hooks) {
   setupMirage(hooks);
 
   hooks.beforeEach(function () {
-    const mockStaticConfig = Ember.Service.extend({
+    const mockStaticConfig = Service.extend({
       getStaticConfig: () => Promise.resolve({
         assetsUri: '',
         branding: {

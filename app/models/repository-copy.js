@@ -1,9 +1,9 @@
-import DS from 'ember-data';
+import Model, { attr, belongsTo } from '@ember-data/model';
 
-export default DS.Model.extend({
-  externalIds: DS.attr('set'),
-  accessUrl: DS.attr('string'),
-  copyStatus: DS.attr('string'),
-  publication: DS.belongsTo('publication'),
-  repository: DS.belongsTo('repository'),
+export default Model.extend({
+  externalIds: attr('set'),
+  accessUrl: attr('string'),
+  copyStatus: attr('string'),
+  publication: belongsTo('publication'),
+  repository: belongsTo('repository'),
 });

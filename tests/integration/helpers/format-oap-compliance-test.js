@@ -1,3 +1,4 @@
+import { find } from '@ember/test-helpers';
 import { setupRenderingTest } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import { module, test } from 'qunit';
@@ -11,6 +12,6 @@ module('Integration | Helper | format oap compliance', (hooks) => {
 
     await this.render(hbs`{{format-oap-compliance inputValue}}`);
 
-    assert.equal(this.$().text().trim(), 'Yes');
+    assert.dom('span').hasText('Yes');
   });
 });

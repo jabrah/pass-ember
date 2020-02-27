@@ -1,15 +1,15 @@
-import DS from 'ember-data';
+import Model, { attr } from '@ember-data/model';
 
-export default DS.Model.extend({
+export default Model.extend({
   /** (REQUIRED) */
-  displayName: DS.attr('string'),
+  displayName: attr('string'),
   /** (REQUIRED) */
-  email: DS.attr('string'),
-  orcid: DS.attr('string'),
+  email: attr('string'),
+  orcid: attr('string'),
   // ---- Uncomment as needed in UI----
-  firstName: DS.attr('string'),
-  middleName: DS.attr('string'),
-  lastName: DS.attr('string'),
-  institutionalId: DS.attr('string'),
-  affiliation: DS.attr('string')
+  firstName: attr('string'),
+  middleName: attr('string'),
+  lastName: attr('string'),
+  institutionalId: attr('string'),
+  affiliation: attr('string')
 });

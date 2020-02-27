@@ -1,4 +1,4 @@
-import Service from '@ember/service';
+import Service, { inject as service } from '@ember/service';
 import ENV from 'pass-ember/config/environment';
 import { task, all, hash } from 'ember-concurrency';
 import { get } from '@ember/object';
@@ -10,7 +10,7 @@ export default Service.extend({
   policyUrl: '',
   repoUrl: '',
 
-  store: Ember.inject.service('store'),
+  store: service('store'),
 
   init() {
     this._super(...arguments);
